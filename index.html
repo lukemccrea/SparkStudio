@@ -5,19 +5,21 @@
       File
     </button>
     <div class="dropdown-content">
-      <button id="saveHTMLButton" onclick="file(getProjectName(), '.html', (compile()))">
-        Save as .html
-      </button>
-      <button id="saveTxtButton" onclick="file(getProjectName(), '.txt', (compile()))">
-        Save as .txt
-      </button>
-      <button id="ImportButton">
-        <input type="file" id="importFile" />
-      </button>
-
-
+      <div class="subDropdown-content">
+        <button id="saveHTMLButton" onclick="file(getProjectName(), '.html', (compile()))">
+          Save as .html
+        </button>
+        <button id="saveTxtButton" onclick="file(getProjectName(), '.txt', (<compile>              </compile>()))">
+          Save as .txt
+        </button>
+        <button id="ImportButton" onclick="document.getElementById('importFile').click();">
+          Import
+          <input type="file" id="importFile" style="display:none;" />
+        </button>
+      </div>
     </div>
   </div>
+
   <button class="topButton" id="SettingsButton" onclick="openSettings()">
     Settings
   </button>
@@ -56,7 +58,7 @@
   </div>
 
   <div id="outputAreaBox" class="editorArea">
-    <iframe id="OutputArea" sandbox="allow-scripts"></iframe>
+    <iframe id="OutputArea" sandbox="allow-scripts" scrolling="auto"></iframe>
   </div>
 
 
@@ -66,9 +68,23 @@
       Name
     </p>
     <input type="text" id="projectNameInput" placeholder="Untitled Project" rows="1" maxlength="30" wrap="off">
+    <label class="switch">
+      <input id="autoSaveSwitch" type="checkbox">
+      <span class="slider round"></span>
 
-  </div>
+    </label>
+    <p class="switchLabel">
+      Auto Save
+    </p>
+    <!-- Buttons to choose list or grid view -->
+    <button onclick="listView()"><i class="SettingsButton"></i> List</button>
+    <button onclick="gridView()"><i class="SettingsButton"></i> Grid</button>
+
+    <div class="row">
+      <div class="column" style="background-color:#aaa;">
+      </div>
 </body>
+
 
 
 <link rel="stylesheet" href="editor.css"
