@@ -1,18 +1,92 @@
+
+
+.switchLabel{
+  position: relative;
+  top: -1px;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.switch {
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  margin-top: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .editorIcon {
   position: absolute;
   background-color: transparent;
   border: none;
-  font-size: 13px;
+  font-size: 18px;
   z-index: 100;
   top: 0px;
   right: 0px;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .editorIcon:hover {
   color: white;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 13.5px;
 }
 
 header {
@@ -21,10 +95,11 @@ header {
   top: 0vh;
   color: white;
   font-weight: bold;
-  padding: 10px;
   font-family: Arial, sans-serif;
   opacity: 100;
   z-index: 1;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .SettingsTitles {
@@ -36,6 +111,9 @@ header {
   transition: 0.3s;
   height: 10px;
   font-family: Arial, sans-serif;
+}
+
+.SettingsButton {
 }
 
 #projectNameInput {
@@ -85,12 +163,14 @@ header {
 
 .topButton {
   font-family: Arial, serif;
-  height: 30px;
+  height: 45px;
   cursor: pointer;
   transition: 0.3s;
   outline: none;
   border: none;
-  border-radius: 2px;
+  color: white;
+  background-color: transparent;
+  border-radius: 4px;
 }
 
 .topButton:hover {
@@ -98,11 +178,15 @@ header {
 }
 
 .editorArea {
-  resize: both;
+  resize: none;
   float: left;
-  width: 47%;
+  width: 50%;
   position: relative;
   height: 40vh;
+}
+
+.editorArea:hover .editorIcon {
+  opacity: 100;
 }
 
 body {
@@ -149,6 +233,7 @@ body {
   display: block;
   text-align: left;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 /* Change color of dropdown links on hover */
@@ -159,7 +244,7 @@ body {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
-}
+  }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
@@ -168,6 +253,6 @@ body {
 
 html {
   height: 100%;
+  width: 100%;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
 }
