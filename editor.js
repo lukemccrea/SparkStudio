@@ -5,6 +5,7 @@ var outputArea = document.getElementById("OutputArea");
 var saveHTMLButton = document.getElementById("saveHTMLButton")
 var saveTxtButton = document.getElementById("saveTxtButton")
 var projectNameInputArea = document.getElementById("projectNameInput")
+var autoSaveSwitch = document.getElementById("autoSaveSwitch")
 
 window.onload = loadData()
 
@@ -54,13 +55,14 @@ function getProjectName() {
 }
 
 function run() {
+	if(autoSaveSwitch.checked){
+  saveProject()
+  }
   outputArea.style.backgroundColor = "white";
   var JScode = "<script> " + javaScriptContainer.value + "<" + "/script>"
   var HTMLcode = HTMLScriptContainer.value
   var CSScode = "<style>" + CSSScriptContainer.value + "</style>";
   outputArea.srcdoc = HTMLcode + CSScode + JScode
-
-  outputArea.contentWindow.eval(JScode);
 }
 
 function compile() {
@@ -109,4 +111,24 @@ function openSettings() {
 
 function closeSettings() {
   document.getElementById("mySidenav").style.width = "0";
+}
+
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("editorArea");
+
+// Declare a loop variable
+var i;
+
+// List View
+function listView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "100%";
+  }
+}
+
+// Grid View
+function gridView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "50%";
+  }
 }
