@@ -140,7 +140,7 @@
   <div class="column" style="background-color:#aaa;">
   </div>
 </body>
-<script> function openTab(evt, cityName) {
+<script>function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("editorArea");
   for (i = 0; i < tabcontent.length; i++) {
@@ -343,6 +343,7 @@ function gridView() {
 function openWindow() {
   var externalWindow = window.open()
   externalWindow.document.write(compile());
+	externalWindow.document.title = getProjectName();
 }
 
 /* When the user clicks on the button,
