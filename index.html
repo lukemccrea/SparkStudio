@@ -1,83 +1,68 @@
 <!DOCTYPE html>
 
 <head>
-	<title>Spark Code</title>
-	<link rel="icon" href="Icons/favicon.ico"/>
-  <! Import Code Mirror Libraries>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
+<! Import Code Mirror Libraries>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
+  </script>
+  
+</head>
+
+<header>
+
+  <! Import Codemirror Libraries>
     <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
     <script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
     <script type="text/javascript" src="https://codemirror.net/mode/xml/xml.js"></script>
     <script type="text/javascript" src="https://codemirror.net/mode/css/css.js"></script>
     <script type="text/javascript" src="https://codemirror.net/mode/javascript/javascript.js"></script>
 
-</head>
-
-<div id="loader"></div>
-
-<header id="header">
-
-  <div class="dropdown">
-<button class="topButton" id="fileButton" onclick="file(getProjectName(), '.html', (compile()))">
-    File
-  </button>
-    <div class="dropdown-content">
-      <div class="subDropdown-content">
-        <button id="saveHTMLButton" onclick="file(getProjectName(), '.html', (compile()))">
-          Save as .html
-        </button>
-        <button id="saveTxtButton" onclick="file(getProjectName(), '.txt', (<compile>              </compile>()))">
-          Save as .txt
-        </button>
-        <button id="printButton" onclick="document.getElementById('OutputArea').contentWindow.print()">
-          Print
-        </button>
-        <button id="ImportButton" onclick="document.getElementById('importFile').click();">
-          Import
-          <input type="file" id="importFile" style="display:none;" accept=".js, .html, .css, .txt" />
-        </button>
+    <div class="dropdown">
+      <button class="topButton" id="fileButton" onclick="file(getProjectName(), '.html', (compile()))">
+        File
+      </button>
+      <div class="dropdown-content">
+        <div class="subDropdown-content">
+          <button id="saveHTMLButton" onclick="file(getProjectName(), '.html', (compile()))">
+            Save as .html
+          </button>
+          <button id="saveTxtButton" onclick="file(getProjectName(), '.txt', (<compile>              </compile>()))">
+            Save as .txt
+          </button>
+          <button id="printButton" onclick="document.getElementById('OutputArea').window.print()">
+            Print
+          </button>
+          <button id="ImportButton" onclick="document.getElementById('importFile').click();">
+            Import
+            <input type="file" id="importFile" style="display:none;" />
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <button class="topButton" id="SettingsButton" onclick="openSettings()">
-    Settings
-  </button>
+    <button class="topButton" id="SettingsButton" onclick="openSettings()">
+      Settings
+    </button>
 
-  <button class="topButton" id="SaveButton" onclick="saveProject()">
-    Save
-  </button>
+    <button class="topButton" id="SaveButton" onclick="saveProject()">
+      Save
+    </button>
 
-  <button class="topButton" id="newWindowButton" onclick="openWindow()">
-    Open in New Window
-  </button>
-  <button class="topButton dropbtn" id="toolboxButton" onclick="openToolbox()">
-    Toolbox
-  </button>
-  <div class="toolbox">
+    <button class="topButton" id="newWindowButton" onclick="openWindow()">
+      Open in New Window
+    </button>
 
-    <div id="toolbox" class="toolbox-content">
-      <input type="color">
-    </div>
-  </div>
+    <button class="topButton" id="runButton" onclick="run()">
+      ▶ Run
+    </button>
 
-  <button class="topButton" id="runButton" onclick="run()">
-    ▶ Run
-  </button>
-
-<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
-
+    Hammerhead Code
 </header>
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'HTMLarea')">HTML</button>
-  <button class="tablinks" onclick="openTab(event, 'CSSarea')">CSS</button>
-  <button class="tablinks" onclick="openTab(event, 'JSarea')">JavaScript</button>
-	<button class="tablinks" onclick="openTab(event, 'outputAreaBox')">Output</button>
-</div>
-<body id="body">
 
+<body id="body">
   <div id="HTMLarea" class="editorArea">
     <textarea id="HTMLScriptContainer" placeholder="HTML" spellcheck="false"></textarea>
     <button id="HTMLeditorDownloadButton" class="editorIcon" onclick="file(getProjectName(), '.html', HTMLScriptContainer.getValue())">
@@ -99,9 +84,9 @@
   </div>
 
   <div id="outputAreaBox" class="editorArea">
-    <img src="https://cdn1.iconfinder.com/data/icons/material-core/14/fullscreen-512.png" onclick="openFullscreen()" class="editorIcon">
-    <iframe id="OutputArea" sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-same-origin" scrolling="auto"></iframe>
+    <iframe id="OutputArea" sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads" scrolling="auto"></iframe>
   </div>
+
 
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeSettings()">&times;</a>
@@ -125,35 +110,17 @@
       Layout
     </p>
     <div id="layoutSelector">
-      <button onclick="listView()" class="settingsButton">List
-      </button>
-      <button onclick="gridView()" class="settingsButton">Grid</button>
-			<button onclick="tabView()" class="settingsButton">Tabs</button>
+      <button onclick="listView()"><i class="SettingsButton"></i> List</button>
+      <button onclick="gridView()"><i class="SettingsButton"></i> Grid</button>
     </div>
-  </div>
 
 
 
-  <div class="row">
-
-  </div>
-  <div class="column" style="background-color:#aaa;">
-  </div>
+    <div class="row">
+      <div class="column" style="background-color:#aaa;">
+      </div>
 </body>
-<script>function openTab(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("editorArea");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
+<script>  
 //Set up Codemirror Editors
 
 var javaScriptContainer = CodeMirror.fromTextArea(document.getElementById("javaScriptContainer"), {
@@ -206,6 +173,7 @@ var settingsArea = document.getElementById("mySidenav")
 var header = document.getElementById("header")
 var elements = document.getElementsByClassName("editorArea");
 var tabs = document.getElementsByClassName("tab")
+var HTMLArea = document.getElementById("HTMLarea")
 
 window.onload = loadData()
 
@@ -267,8 +235,9 @@ function run() {
 
 function compile() {
   var JScode = "<script> " + javaScriptContainer.getValue() + "<" + "/script>"
+	var CSScode = "<style>" + CSSScriptContainer.getValue() + "</style>"
   var HTMLcode = HTMLScriptContainer.getValue()
-  var CSScode = "<style>" + CSSScriptContainer.getValue() + "</style>"
+  
   return (HTMLcode + JScode + CSScode)
 }
 
@@ -344,6 +313,7 @@ function openWindow() {
   var externalWindow = window.open()
   externalWindow.document.write(compile());
 	externalWindow.document.title = getProjectName();
+	
 }
 
 /* When the user clicks on the button,
@@ -377,7 +347,6 @@ function openFullscreen() {
 }
 
 function tabView() {
-	openTab(event, 'HTMLarea')
 	for (i = 0; i < elements.length; i++) {
     elements[i].style.width = "100%";
 		elements[i].style.height = "83vh";
@@ -385,20 +354,43 @@ function tabView() {
 	for (i = 0; i < tabs.length; i++) {
     tabs[i].style.display = "inline";
   }
-}</script><style>.tab {
+	
+}
+
+function openTab(evt, tabArea) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("editorArea");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabArea).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+</script><style>.codeMirrorContainer {
+	height: 80%;
+}
+
+.tab {
 	display: none;
 }
 
 .tab button {
+	border: none;
+	margin-top: 10px;
+	margin-left: 5px;
   background-color: #5C5C5C;
   float: left;
-  border: none;
-  outline: thin;
   cursor: pointer;
-  padding: 10px 16px;
+  padding: 5px 16px;
   transition: 0.3s;
   font-size: 14px;
-	
+	width: 100px;
+	clip-path: polygon(15% 0, 86% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
 }
 
 .tab button.active {
@@ -417,10 +409,8 @@ function tabView() {
   background-color: #696969;
 }
 
-
-
-.CodeMirror {
-  z-index: 1;
+.editorLabel {
+	display: block;
 }
 
 iframe {
@@ -531,6 +521,8 @@ header {
   z-index: 10;
   height: 45px;
   top: 0;
+	padding: 0px;
+	overflow: hidden;
 }
 
 #Logo {
@@ -538,6 +530,7 @@ header {
 	position: relative;
 	float: right;
 	height: 100%;
+	
 }
 
 .SettingsTitles {
@@ -615,6 +608,8 @@ header {
   background-color: transparent;
   border-radius: 1px;
   display: inline;
+	position: relative;
+	top: -1px;
 }
 
 .topButton:hover {
@@ -733,4 +728,23 @@ html {
 
 .show {
   display: block;
+}
+
+#color-picker {
+  border: 3px solid rgba(15, 15, 15, 0.2);
+}
+
+.info {
+  width: 12em;
+  display: flex;
+  margin-left: 4em;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.selected {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 2px solid rgba(15, 15, 15, 0.2);
 }</style>
