@@ -7,3 +7,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC, L]
 
+#Alternate default index page
+DirectoryIndex editor.html
+
