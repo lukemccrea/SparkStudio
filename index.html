@@ -31,14 +31,12 @@
 
 </head>
 
-<div id="loader"></div>
-
 <header id="header">
 
   <div class="dropdown">
-<button class="topButton" id="fileButton" onclick="file(getProjectName(), '.html', (compile()))">
-    File
-  </button>
+    <button class="topButton" id="fileButton">
+      File
+    </button>
     <div class="dropdown-content">
       <div class="subDropdown-content">
         <button id="saveHTMLButton" onclick="file(getProjectName(), '.html', (compile()))">
@@ -67,30 +65,36 @@
   </button>
 
   <button class="topButton" id="newWindowButton" onclick="openWindow()">
-    Open in New Window
+    Open in New Tab
   </button>
   <button class="topButton dropbtn" id="toolboxButton" onclick="openToolbox()">
-    Toolbox
+    Command
   </button>
   <div class="toolbox">
 
     <div id="toolbox" class="toolbox-content">
+		<input type="text" id="commandLine">
     </div>
   </div>
 
   <button class="topButton" id="runButton" onclick="run()">
-    ▶ Run
+    &#9655 Run
+  </button>
+	
+	<button class="topButton" id="stopButton" onclick="stop()" style="display: none;">
+    &#9744; Stop
   </button>
 
-<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
+  <img src="Icons/SparkCodeLogo.png" id="Logo" alt="Spark Code">
 
 </header>
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'HTMLarea')" id="HTMLTabButton">HTML</button>
   <button class="tablinks" onclick="openTab(event, 'CSSarea')">CSS</button>
   <button class="tablinks" onclick="openTab(event, 'JSarea')">JavaScript</button>
-	<button class="tablinks" onclick="openTab(event, 'outputAreaBox')">Output</button>
+  <button class="tablinks" onclick="openTab(event, 'outputAreaBox')">Output</button>
 </div>
+
 <body id="body">
 
   <div id="HTMLarea" class="editorArea">
@@ -115,7 +119,7 @@
 
   <div id="outputAreaBox" class="editorArea">
     <img src="Icons/326650_fullscreen_icon.png" onclick="openFullscreen()" class="editorIcon">
-    <iframe id="OutputArea" sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-same-origin" scrolling="auto"></iframe>
+    <iframe id="OutputArea" sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-same-origin" scrolling="auto">Your browser does not Support Iframe.</iframe>
   </div>
 
   <div id="mySidenav" class="sidenav">
@@ -123,12 +127,16 @@
     <p class="SettingsTitles">
       Name
     </p>
-    <input type="text" id="projectNameInput" placeholder="Untitled Project" rows="1" maxlength="30" wrap="off">
+    <input type="text" id="projectNameInput" class="projectInput" placeholder="Untitled Project" rows="1" maxlength="30" wrap="off">
+    <p class="SettingsTitles">
+      Description
+    </p>
+    <textarea id="projectDescriptionInput" class="projectInput" placeholder="Description" rows="3" maxlength="100"></textarea>
     <p class="SettingsTitles">
       General
     </p>
     <label class="switch">
-      <input id="autoSaveSwitch" type="checkbox">
+      <input id="autoSaveSwitch" type="checkbox" checked="true">
       <span class="slider round"></span>
 
     </label>
@@ -143,7 +151,7 @@
       <button onclick="listView()" class="settingsButton">List
       </button>
       <button onclick="gridView()" class="settingsButton">Grid</button>
-			<button onclick="tabView()" class="settingsButton">Tabs</button>
+      <button onclick="tabView()" class="settingsButton">Tabs</button>
     </div>
   </div>
 
@@ -154,7 +162,9 @@
   </div>
   <div class="column" style="background-color:#aaa;">
   </div>
-</body><script>  
+</body>
+
+<script>  
 //Set up Codemirror Editors
 
 var javaScriptContainer = CodeMirror.fromTextArea(document.getElementById("javaScriptContainer"), {
@@ -194,6 +204,7 @@ CSSScriptContainer.setSize("100%", "100%")
 
 if (!HTMLScriptContainer || !javaScriptContainer || !CSSScriptContainer) {
   alert("Failed to load Codemirror Libraries. If this problem persists please contact support.")
+	console.error("Failed to load code mirror editors.")
 }
 
 
@@ -208,19 +219,33 @@ var header = document.getElementById("header")
 var elements = document.getElementsByClassName("editorArea");
 var tabs = document.getElementsByClassName("tab")
 var HTMLArea = document.getElementById("HTMLarea")
+var importFileInput = document.getElementById("importFile")
+var runButton = document.getElementById("runButton")
+var stopButton = document.getElementById("stopButton")
 
 window.onload = loadData()
 
 
 document.getElementById("importFile").addEventListener("change", function() {
   var file = this.files[0];
+  var type = importFileInput.value.split('.')[1];
+  console.log("File type = " + type);
 
   if (file) {
     var reader = new FileReader();
 
     reader.onload = function(evt) {
       console.log(evt);
-      HTMLScriptContainer.getDoc().setValue(evt.target.result)
+      var scriptContainer = HTMLScriptContainer
+      if (type == "html" || type == "txt") {
+        scriptContainer = HTMLScriptContainer
+      } else if (type == "js") {
+        scriptContainer = javaScriptContainer
+      } else if (type == "css") {
+        scriptContainer = CSSScriptContainer
+      }
+      scriptContainer.getDoc().setValue(evt.target.result);
+      alert("Succesfully imported the " + type + " file.")
     };
 
     reader.onerror = function(evt) {
@@ -265,13 +290,16 @@ function run() {
   outputArea.style.backgroundColor = "white";
 
   outputArea.srcdoc = compile()
-}
+	
+	runButton.style.display = "none"
+	stopButton.style.display = "inline"
+	}
 
 function compile() {
   var JScode = "<script> " + javaScriptContainer.getValue() + "<" + "/script>"
-	var CSScode = "<style>" + CSSScriptContainer.getValue() + "</style>"
+  var CSScode = "<style>" + CSSScriptContainer.getValue() + "</style>"
   var HTMLcode = HTMLScriptContainer.getValue()
-  
+
   return (HTMLcode + JScode + CSScode)
 }
 
@@ -323,10 +351,10 @@ var i;
 function listView() {
   for (i = 0; i < elements.length; i++) {
     elements[i].style.width = "100%";
-		elements[i].style.display = "inline";
-		elements[i].style.height = "34vh";
+    elements[i].style.display = "inline";
+    elements[i].style.height = "34vh";
   }
-	for (i = 0; i < tabs.length; i++) {
+  for (i = 0; i < tabs.length; i++) {
     tabs[i].style.display = "none";
   }
 }
@@ -335,10 +363,10 @@ function listView() {
 function gridView() {
   for (i = 0; i < elements.length; i++) {
     elements[i].style.width = "49.5%";
-		elements[i].style.height = "44vh";
-		elements[i].style.display = "inline";
+    elements[i].style.height = "44vh";
+    elements[i].style.display = "inline";
   }
-	for (i = 0; i < tabs.length; i++) {
+  for (i = 0; i < tabs.length; i++) {
     tabs[i].style.display = "none";
   }
 }
@@ -346,8 +374,8 @@ function gridView() {
 function openWindow() {
   var externalWindow = window.open()
   externalWindow.document.write(compile());
-	externalWindow.document.title = getProjectName();
-	
+  externalWindow.document.title = getProjectName();
+
 }
 
 /* When the user clicks on the button,
@@ -373,22 +401,24 @@ window.onclick = function(event) {
 function openFullscreen() {
   if (outputArea.requestFullscreen) {
     outputArea.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
     outputArea.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
     outputArea.msRequestFullscreen();
   }
 }
 
 function tabView() {
-	for (i = 0; i < elements.length; i++) {
+  for (i = 0; i < elements.length; i++) {
     elements[i].style.width = "100%";
-		elements[i].style.height = "83vh";
+    elements[i].style.height = "83vh";
   }
-	for (i = 0; i < tabs.length; i++) {
+  for (i = 0; i < tabs.length; i++) {
     tabs[i].style.display = "inline";
   }
-	
+
 }
 
 function openTab(evt, tabArea) {
@@ -405,27 +435,33 @@ function openTab(evt, tabArea) {
   evt.currentTarget.className += " active";
 }
 
+function stop(){
+	outputArea.srcdoc = ""
+	outputArea.style.backgroundColor = "#272822"
+	stopButton.style.display = "none"
+	runButton.style.display = "inline"
+}
+
 </script><style>.codeMirrorContainer {
-	height: 80%;
-	z-index: 20;
+  height: 80%;
 }
 
 .tab {
-	display: none;
+  display: none;
 }
 
 .tab button {
-	border: none;
-	margin-top: 10px;
-	margin-left: 5px;
+  border: none;
+  margin-top: 10px;
+  margin-left: 5px;
   background-color: #5C5C5C;
   float: left;
   cursor: pointer;
   padding: 5px 16px;
   transition: 0.3s;
   font-size: 14px;
-	width: 100px;
-	clip-path: polygon(15% 0, 86% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+  width: 100px;
+  clip-path: polygon(15% 0, 86% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
 }
 
 .tab button.active {
@@ -445,7 +481,7 @@ function openTab(evt, tabArea) {
 }
 
 .editorLabel {
-	display: block;
+  display: block;
 }
 
 iframe {
@@ -547,24 +583,24 @@ input:checked+.slider:before {
 
 header {
   background-color: #121212;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
+  /* Safari */
   position: sticky;
   color: white;
   font-weight: bold;
   font-family: Arial, sans-serif;
   opacity: 100;
-  z-index: 1000;
+  z-index: 10;
   height: 45px;
   top: 0;
-	padding: 0px;
+  padding: 0px;
 }
 
 #Logo {
-	display: inline;
-	position: relative;
-	float: right;
-	height: 100%;
-	
+  display: inline;
+  position: relative;
+  float: right;
+  height: 100%;
 }
 
 .SettingsTitles {
@@ -585,7 +621,7 @@ header {
   padding: 4px;
 }
 
-#projectNameInput {
+.projectInput {
   padding: 8px;
   resize: none;
   display: block;
@@ -594,6 +630,8 @@ header {
   left: 8px;
   border-radius: 4px;
   border: none;
+  width: 85%;
+  font-family: Arial, serif;
 }
 
 .sidenav {
@@ -642,7 +680,8 @@ header {
   background-color: transparent;
   border-radius: 1px;
   display: inline;
-	top: -1px;
+  position: relative;
+  top: -1px;
 }
 
 .topButton:hover {
@@ -695,7 +734,7 @@ body {
   height: 100%;
   position: relative;
   display: inline-block;
-	z-index: 100000;
+
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -705,7 +744,7 @@ body {
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-  z-index: 100000;
+  z-index: 20;
 }
 
 /* Links inside the dropdown */
@@ -719,7 +758,7 @@ body {
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
-  z-index: 10000000;
+  z-index: 100;
 }
 
 /* Change color of dropdown links on hover */
@@ -761,4 +800,4 @@ html {
 
 .show {
   display: block;
-}</style>
+}
