@@ -2,23 +2,13 @@
 
 <head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-92HLZ799NE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-92HLZ799NE');
-</script>
-	
   <meta charset="UTF-8">
   <meta name="description" content="Spark Code is a web based IDE for editing and running HTML, CSS, and JavaScript code.">
   <meta name="keywords" content="HTML, CSS, JavaScript, IDE, JavaScript Editor, HTML Editor, CSS Editor, Web IDE, Code Editor, test HTML code, test CSS code, test JavaScript Code, test code, online code editor, online code IDE">
   <meta name="author" content="Hammerhead Studios">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Spark Code</title>
-	<link rel="icon" href="Icons/favicon.ico"/>
+  <title>Spark Code</title>
+  <link rel="icon" href="Icons/favicon.ico" />
   <! Import Code Mirror Libraries>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
@@ -85,7 +75,7 @@
     &#9744; Stop
   </button>
 
-  <img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
+  <img src="Icons/SparkCodeLogo.png" id="Logo" alt="Spark Code">
 
 </header>
 <div class="tab">
@@ -163,9 +153,7 @@
   <div class="column" style="background-color:#aaa;">
   </div>
 </body>
-
-<script>  
-//Set up Codemirror Editors
+<script> //Set up Codemirror Editors
 
 var javaScriptContainer = CodeMirror.fromTextArea(document.getElementById("javaScriptContainer"), {
   styleActiveLine: true,
@@ -222,6 +210,8 @@ var HTMLArea = document.getElementById("HTMLarea")
 var importFileInput = document.getElementById("importFile")
 var runButton = document.getElementById("runButton")
 var stopButton = document.getElementById("stopButton")
+const urlParams = new URLSearchParams(window.location.search);
+var projectName = urlParams.get('project');
 
 window.onload = loadData()
 
@@ -261,6 +251,7 @@ function loadData() {
   javaScriptContainer.getDoc().setValue(localStorage.getItem("JScode"));
   CSSScriptContainer.getDoc().setValue(localStorage.getItem("CSScode"));
   HTMLScriptContainer.getDoc().setValue(localStorage.getItem("HTMLcode"));
+	projectNameInputArea.value = projectName
 }
 
 function saveProject() {
@@ -268,6 +259,8 @@ function saveProject() {
     localStorage.setItem("JScode", javaScriptContainer.getValue());
     localStorage.setItem("CSScode", CSSScriptContainer.getValue());
     localStorage.setItem("HTMLcode", HTMLScriptContainer.getValue());
+		localStorage.setItem("projectName", HTMLScriptContainer.getValue());
+		
   } else {
     alert("Uh oh! It looks like your browser doesn't support saving data.")
   }
@@ -440,9 +433,7 @@ function stop(){
 	outputArea.style.backgroundColor = "#272822"
 	stopButton.style.display = "none"
 	runButton.style.display = "inline"
-}
-
-</script><style>.codeMirrorContainer {
+}</script><style>.codeMirrorContainer {
   height: 80%;
 }
 
@@ -801,3 +792,4 @@ html {
 .show {
   display: block;
 }
+</style>
