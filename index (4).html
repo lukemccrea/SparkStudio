@@ -1,0 +1,58 @@
+<head>
+ <meta name="description" content="Spark Code is a web based IDE for editing and running HTML, CSS, and JavaScript code.">
+ <meta charset="UTF-8">
+ <meta name="keywords" content="HTML, CSS, JavaScript, IDE, JavaScript Editor, HTML Editor, CSS Editor, Web IDE, Code Editor, test HTML code, test CSS code, test JavaScript Code, test code, online code editor, online code IDE">
+ <meta name="author" content="Hammerhead Studios">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Spark Code</title>
+ <link rel="icon" href="Icons/favicon.ico">
+ 
+</head>
+<body id="body">
+<header>
+	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
+</header>
+</body><script> var projects = localStorage.getItem('projects');
+var body = document.getElementById("body")
+
+if (projects == null) {
+  projects = []
+}
+
+for (i = 0; i < projects.length; i++) {
+  var id = projects[i];
+	var name = localStorage.getItem(id + "-name")
+	var description = localStorage.getItem(id + "-description")
+	
+	var div = document.createElement("div");
+  var title = document.createElement("h1");
+  var TitleNode = document.createTextNode(name);
+	var description = document.createElement("p");
+  var descriptionNode = document.createTextNode(description);
+	div.setAttribute("onclick", "openProject(" + id + ")");
+	
+	
+  title.appendChild(TitleNode);
+	description.appendChild(descriptionNode);
+	div.appendChild(title);
+	div.appendChild(description);
+	body.appendChild(div);
+}
+
+function openProject(id){
+	location.href = '/editor?id=' + id;
+}
+</script><style>header {
+	background-color: black;
+	color: white;
+	padding: 5px;
+	font-size: 20px;
+}
+
+body {
+	margin: 0px;
+}
+
+body div {
+	cursor: pointer;
+}</style>
