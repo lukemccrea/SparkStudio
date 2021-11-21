@@ -1,0 +1,116 @@
+<head>
+ <meta name="description" content="Spark Code is a web based IDE for editing and running HTML, CSS, and JavaScript code.">
+ <meta charset="UTF-8">
+ <meta name="keywords" content="HTML, CSS, JavaScript, IDE, JavaScript Editor, HTML Editor, CSS Editor, Web IDE, Code Editor, test HTML code, test CSS code, test JavaScript Code, test code, online code editor, online code IDE">
+ <meta name="author" content="Hammerhead Studios">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Spark Code</title>
+ <link rel="icon" href="Icons/favicon.ico">
+ 
+</head>
+<body id="body">
+<header>
+	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
+</header>
+<div id="projectArea">
+<div onclick="createProject()">
+<h2>
++
+</h2>
+</div>
+</div>
+</body><script> var projectNumber = localStorage.getItem('projectNumber');
+var projectArea = document.getElementById("projectArea")
+
+//localStorage.removeItem("projectNumber");
+
+if (projectNumber == null) {
+  localStorage.setItem("projectNumber", 0)
+}
+
+for (i = 0; i < projectNumber; i++) {
+  var id = i.toString()
+  var name = localStorage.getItem(id + "-name")
+  var description = localStorage.getItem(id + "-description")
+
+  if (name !== "null") {
+    var div = document.createElement("div");
+    var title = document.createElement("h1");
+    var TitleNode = document.createTextNode(name);
+    var descriptionElement = document.createElement("p");
+    var descriptionNode = document.createTextNode(description);
+    div.setAttribute("onclick", "openProject(" + id + ")");
+		title.appendChild(TitleNode);
+  descriptionElement.appendChild(descriptionNode);
+  div.appendChild(title);
+  div.appendChild(descriptionElement);
+  projectArea.appendChild(div);
+  }
+}
+
+function openProject(id) {
+  location.href = 'https://hammerheadstudios.github.io/SparkCode/editor.html?id=' + id;
+}
+
+function createProject() {
+  projectNumber++
+  localStorage.setItem("projectNumber", projectNumber);
+  console.log(projectNumber)
+  location.href = 'https://hammerheadstudios.github.io/SparkCode/editor.html?id=' + (projectNumber - 1);
+}
+</script><style>header {
+	background-color: black;
+	color: white;
+	padding: 5px;
+	font-size: 20px;
+	height: 50px;
+}
+
+body {
+	margin: 0px;
+	background-color: #333333;
+}
+
+#projectArea h1 {
+	display: block;
+	font-family: arial, serif;
+	font-size: 30px;
+}
+
+#projectArea p {
+	display: block;
+	font-family: arial, serif;
+}
+
+#projectArea h2{
+	position: relative;
+	font-size: 100px;
+	margin: 0;
+	top: 13px;
+}
+
+#projectArea div {
+	display: inline-block;
+	cursor: pointer;
+	width: 250px;
+	height: 150px;
+	background-color: #545454;
+	padding: 1px;
+	text-align: center;
+	border-radius: 5px;
+	transition: 0.2s;
+	outline: 5px solid #5e5e5e;
+	margin: 25px;
+	color: white;
+	
+}
+
+#projectArea div:hover {
+	background-color: #4d4d4d;
+	outline: 5px solid #404040;
+	color: #cfcfcf;
+}
+
+#logo{
+	height: 40px;
+}</style>
