@@ -1,0 +1,269 @@
+<head>
+ <meta name="description" content="Spark Code is a web based IDE for editing and running HTML, CSS, and JavaScript code.">
+ <meta charset="UTF-8">
+ <meta name="keywords" content="HTML, CSS, JavaScript, IDE, JavaScript Editor, HTML Editor, CSS Editor, Web IDE, Code Editor, test HTML code, test CSS code, test JavaScript Code, test code, online code editor, online code IDE">
+ <meta name="author" content="Hammerhead Studios">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Spark Code</title>
+ <link rel="icon" href="Icons/favicon.ico">
+ 
+</head>
+<body id="body">
+<header>
+	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code" onclick="window.location.href='index.html'">
+	<button onclick="window.location.href = 'index.html';">Home</button>
+	<button class="active" >Learn</button>
+	<svg aria-hidden="true" onclick="location.href = 'https://github.com/lukemccrea26/SparkCode'" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</header>
+	<div id="info">
+	<p class="c1">
+            <span class="c5">What is Spark Code?</span>
+        </p>
+        <p class="c1">
+            <span class="c0">Spark Code is an online code-editor for running/editing HTML/CSS/JS code. It provides features for exporting and importing code as well as support for an unlimited amount of projects stored locally.</span>
+        </p>
+        <p class="c1 c4">
+            <span class="c0"></span>
+        </p>
+        <p class="c1">
+            <span class="c5">Upcoming Features</span>
+        </p>
+        <p class="c1">
+            <span class="c0">- Console</span>
+        </p>
+        <p class="c1">
+            <span class="c0">- Support for running projects that are pure JS.</span>
+        </p>
+        <p class="c1">
+            <span class="c3">- Section to easily add libraries to projects.</span>
+        </p>
+	</div>
+</body>
+<style>
+#info {
+ text-align: center;
+}
+	
+.icon{
+   float: right;
+   height: 41px;
+   margin-top: 5px;
+   margin-right: 5px;
+   transition: 0.2s;
+}
+	
+.icon:hover {
+   color: grey;
+}
+	
+header {
+	background-color: black;
+	color: white;
+	padding: none;
+	font-size: 20px;
+	height: 50px;
+}
+
+ol {
+                margin: 0;
+                padding: 0
+            }
+
+            table td,table th {
+                padding: 0
+            }
+
+            .c5 {
+                color: #000000;
+                font-weight: 700;
+                text-decoration: none;
+                vertical-align: baseline;
+                font-size: 20pt;
+                font-family: "Arial";
+                font-style: normal
+            }
+
+            .c0 {
+                color: #000000;
+                font-weight: 400;
+                text-decoration: none;
+                vertical-align: baseline;
+                font-size: 14pt;
+                font-family: "Arial";
+                font-style: normal
+            }
+
+            .c1 {
+                padding-top: 0pt;
+                padding-bottom: 0pt;
+                line-height: 1.15;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            .c2 {
+                background-color: #ffffff;
+                max-width: 468pt;
+                padding: 72pt 72pt 72pt 72pt
+            }
+
+            .c3 {
+                font-size: 14pt
+            }
+
+            .c4 {
+                height: 11pt
+            }
+
+            .title {
+                padding-top: 0pt;
+                color: #000000;
+                font-size: 26pt;
+                padding-bottom: 3pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            .subtitle {
+                padding-top: 0pt;
+                color: #666666;
+                font-size: 15pt;
+                padding-bottom: 16pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            li {
+                color: #000000;
+                font-size: 11pt;
+                font-family: "Arial"
+            }
+
+            p {
+                margin: 0;
+                color: #000000;
+                font-size: 11pt;
+                font-family: "Arial"
+            }
+
+            h1 {
+                padding-top: 20pt;
+                color: #000000;
+                font-size: 20pt;
+                padding-bottom: 6pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            h2 {
+                padding-top: 18pt;
+                color: #000000;
+                font-size: 16pt;
+                padding-bottom: 6pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            h3 {
+                padding-top: 16pt;
+                color: #434343;
+                font-size: 14pt;
+                padding-bottom: 4pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            h4 {
+                padding-top: 14pt;
+                color: #666666;
+                font-size: 12pt;
+                padding-bottom: 4pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            h5 {
+                padding-top: 12pt;
+                color: #666666;
+                font-size: 11pt;
+                padding-bottom: 4pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+
+            h6 {
+                padding-top: 12pt;
+                color: #666666;
+                font-size: 11pt;
+                padding-bottom: 4pt;
+                font-family: "Arial";
+                line-height: 1.15;
+                page-break-after: avoid;
+                font-style: italic;
+                orphans: 2;
+                widows: 2;
+                text-align: left
+            }
+	
+header button {
+	font-family: Arial, serif;
+  font-size: 15px;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: transparent;
+  border-radius: 1px;
+  display: inline;
+  position: relative;
+  float: left;
+}
+header button:hover {
+	background-color: grey;
+}
+
+header .active {
+	background-color: white;
+	color: black;
+}
+	
+body {
+	margin: 0px;
+	background-color: #333333;
+}
+
+#logo{
+	height: 100%;
+	float: left;
+}</style>
