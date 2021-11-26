@@ -10,32 +10,63 @@
 </head>
 <body id="body">
 <header>
-	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
+	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code" href="index.html">
+	<button onclick="window.location.href = 'lukemccrea26.github.io/sparkcode/index.html';">Home</button>
+	<button class="active" >Learn</button>
 </header>
-
+	<div id="title">
+	Tutorials coming soon!
+	</div>
 </body>
-<script>
-
-</script>
 <style>
-  header {
+header {
 	background-color: black;
 	color: white;
-	padding: 5px;
+	padding: none;
 	font-size: 20px;
 	height: 50px;
-	text-align: right;
 }
 
+#title {
+  width: 100%;
+  font-family: Arial, serif;
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  height: 50%;
+}
+	
+header button {
+	font-family: Arial, serif;
+  font-size: 15px;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: transparent;
+  border-radius: 1px;
+  display: inline;
+  position: relative;
+  float: left;
+}
+header button:hover {
+	background-color: grey;
+}
+
+header .active {
+	background-color: white;
+	color: black;
+}
+	
 body {
 	margin: 0px;
 	background-color: #333333;
 }
 
-
-
 #logo{
-	height: 55px;
-}
-</style>
-
+	height: 100%;
+	float: left;
+}</style>
