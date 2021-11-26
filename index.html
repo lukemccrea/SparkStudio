@@ -51,14 +51,14 @@ for (i = 0; i < projectNumber; i++) {
 }
 
 function openProject(id) {
-  location.href = 'https://hammerheadstudios.github.io/SparkCode/editor.html?id=' + id;
+  location.href = 'https://lukemccrea26.github.io/SparkCode/editor.html?id=' + id;
 }
 
 function createProject() {
   projectNumber++
   localStorage.setItem("projectNumber", projectNumber);
   console.log(projectNumber)
-  location.href = 'https://hammerheadstudios.github.io/SparkCode/editor.html?id=' + (projectNumber - 1);
+  window.location.href = 'editor.html?id=' + (projectNumber - 1);
 }
 </script><style>
 	header {
