@@ -10,6 +10,8 @@
 </head>
 <body id="body">
 <header>
+	<a class="active">Home</a>
+	<a href="learn.html">Learn</a>
 	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
 </header>
 <div id="projectArea">
@@ -58,15 +60,32 @@ function createProject() {
   console.log(projectNumber)
   location.href = 'https://hammerheadstudios.github.io/SparkCode/editor.html?id=' + (projectNumber - 1);
 }
-</script><style>header {
+</script><style>
+	header {
 	background-color: black;
 	color: white;
 	padding: 5px;
 	font-size: 20px;
 	height: 50px;
-	text-align: right;
+}
+	
+header a {
+	color: white;
+	font-size: 20px;
+	transition: 0.24s;
+	height: 100%;
+	float: left;
+	cursor: pointer;
+}
+header a:hover {
+	background-color: grey;
 }
 
+header .active {
+	background-color: white;
+	color: black;
+}
+	
 body {
 	margin: 0px;
 	background-color: #333333;
@@ -114,4 +133,5 @@ body {
 
 #logo{
 	height: 55px;
+	float: right;
 }</style>
