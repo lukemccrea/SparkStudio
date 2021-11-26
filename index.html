@@ -10,8 +10,8 @@
 </head>
 <body id="body">
 <header>
-	<a class="active">Home</a>
-	<a href="learn.html">Learn</a>
+	<button class="active">Home</button>
+	<button href="learn.html">Learn</button>
 	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
 </header>
 <div id="projectArea">
@@ -69,21 +69,22 @@ function createProject() {
 	height: 50px;
 }
 	
-header a {
-	color: white;
-	font-size: 20px;
-	transition: 0.24s;
-	height: 100%;
-	float: left;
-	cursor: pointer;
-	padding-bottom: 20px;
-	padding-top: 20px;
-	padding-left: 5px;
-	padding-right: 5px;
-	font-style: normal;
-	font-family: Arial, Helvetica, sans-serif;
+header button {
+	font-family: Arial, serif;
+  font-size: 13px;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: transparent;
+  border-radius: 1px;
+  display: inline;
+  position: relative;
+  top: -1px;
 }
-header a:hover {
+header button:hover {
 	background-color: grey;
 }
 
