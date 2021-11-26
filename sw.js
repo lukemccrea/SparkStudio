@@ -1,13 +1,13 @@
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open('fox-store').then((cache) => cache.addAll([
+    caches.open('SparkCode').then((cache) => cache.addAll([
       'index.html',
       'editor.html',
       'learn.html',
       'about.html',
-      '/pwa-examples/a2hs/images/fox2.jpg',
-      '/pwa-examples/a2hs/images/fox3.jpg',
-      '/pwa-examples/a2hs/images/fox4.jpg',
+      'Icons/SparkCodeLogo.svg',
+      'Icons/326650_fullscreen_icon.png',
+      'Icons/favicon.ico',
     ])),
   );
 });
