@@ -36,7 +36,7 @@ for (i = 0; i < projectNumber; i++) {
   var name = localStorage.getItem(id + "-name")
   var description = localStorage.getItem(id + "-description")
 
-  if (name !== "null") {
+  if (name !== "null" && name !== null && name !== "") {
     var div = document.createElement("div");
     var title = document.createElement("h1");
     var TitleNode = document.createTextNode(name);
