@@ -10,9 +10,9 @@
 </head>
 <body id="body">
 <header>
-	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code">
 	<button class="active">Home</button>
 	<button href="learn.html">Learn</button>
+	<img src="Icons/SparkCodeLogo.svg" id="Logo" alt="Spark Code" href="index.html">
 </header>
 <div id="projectArea">
 <div onclick="createProject()">
@@ -82,7 +82,7 @@ header button {
   border-radius: 1px;
   display: inline;
   position: relative;
-  top: -1px;
+  float: right;
 }
 header button:hover {
 	background-color: grey;
@@ -129,7 +129,7 @@ body {
 	outline: 5px solid #5e5e5e;
 	margin: 25px;
 	color: white;
-	float: left;
+	float: right;
 }
 
 #projectArea div:hover {
