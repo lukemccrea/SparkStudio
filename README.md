@@ -1,5 +1,5 @@
 # Spark Code
-Spark Code is an online code-editor for running/editing HTML/CSS/JS code. It provides features for exporting and importing code as well as support for an unlimited amount of projects stored locally.It is constantly being updated and improved so make sure to check back frequently! You can see the site at https://lukemccrea26.github.io/SparkCode/.
+Spark Code is an online code-editor for running/editing HTML/CSS/JS code. It provides features for exporting and importing code as well as support for an unlimited amount of projects stored locally.It is constantly being updated and improved so make sure to check back frequently! You can see the site at https://hammerheadstudios.github.io/SparkCode/.
 
 # Features
 - Edit HTML/CSS/JS projects
