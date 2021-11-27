@@ -281,8 +281,12 @@ function saveProject() {
     localStorage.setItem(projectId + "-JScode", javaScriptContainer.getValue());
     localStorage.setItem(projectId + "-CSScode", CSSScriptContainer.getValue());
     localStorage.setItem(projectId + "-HTMLcode", HTMLScriptContainer.getValue());
-		localStorage.setItem(projectId + "-name", projectNameInputArea.value);
-		localStorage.setItem(projectId + "-description", projectDescriptionArea.value);
+    if(projectNameInputArea.value == "" || projectNameInputArea.value == null projectNameInputArea.value == "null"){
+	    localStorage.setItem(projectId + "-name", "Untitled Project");
+    } else {
+	    localStorage.setItem(projectId + "-name", projectNameInputArea.value);
+    }
+    localStorage.setItem(projectId + "-description", projectDescriptionArea.value);
 		
   } else {
     alert("Uh oh! It looks like your browser doesn't support saving data.")

@@ -6,7 +6,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Spark Code</title>
  <link rel="icon" href="Icons/favicon.ico">
- 
+ <script src="index.js"></script>
 </head>
 <body id="body">
 <header>
@@ -22,6 +22,7 @@
 </h2>
 </div>
 </div>
+<button class="add-button" id="add-button">Add to home screen</button>
 </body><script> var projectNumber = localStorage.getItem('projectNumber');
 var projectArea = document.getElementById("projectArea")
 
@@ -36,7 +37,7 @@ for (i = 0; i < projectNumber; i++) {
   var name = localStorage.getItem(id + "-name")
   var description = localStorage.getItem(id + "-description")
 
-  if (name !== "") {
+  if (name !== "null" && name !== null && name !== "") {
     var div = document.createElement("div");
     var title = document.createElement("h1");
     var TitleNode = document.createTextNode(name);
