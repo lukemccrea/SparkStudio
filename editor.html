@@ -281,7 +281,7 @@ function saveProject() {
     localStorage.setItem(projectId + "-JScode", javaScriptContainer.getValue());
     localStorage.setItem(projectId + "-CSScode", CSSScriptContainer.getValue());
     localStorage.setItem(projectId + "-HTMLcode", HTMLScriptContainer.getValue());
-    if(projectNameInputArea.value == "" || projectNameInputArea.value == null projectNameInputArea.value == "null"){
+    if(projectNameInputArea.value == "" || projectNameInputArea.value == null || projectNameInputArea.value == "null"){
 	    localStorage.setItem(projectId + "-name", "Untitled Project");
     } else {
 	    localStorage.setItem(projectId + "-name", projectNameInputArea.value);
