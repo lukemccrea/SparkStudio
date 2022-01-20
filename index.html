@@ -6,6 +6,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Spark Code</title>
  <link rel="icon" href="Icons/favicon.ico">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id="body">
 <header>
@@ -21,6 +22,7 @@
 </h2>
 </div>
 </div>
+
 </body><script> var projectNumber = localStorage.getItem('projectNumber');
 var projectArea = document.getElementById("projectArea")
 
@@ -38,6 +40,7 @@ for (i = 0; i < projectNumber; i++) {
   if (name !== "null" && name !== null && name !== "") {
     var div = document.createElement("div");
     var title = document.createElement("h1");
+    var icon = document.createElement("i");
     var TitleNode = document.createTextNode(name);
     var descriptionElement = document.createElement("p");
     var descriptionNode = document.createTextNode(description);
@@ -46,7 +49,12 @@ for (i = 0; i < projectNumber; i++) {
   descriptionElement.appendChild(descriptionNode);
   div.appendChild(title);
   div.appendChild(descriptionElement);
+  div.appendChild(icon);
   projectArea.appendChild(div);
+
+  icon.classList.add("fa");
+  icon.classList.add("fa-trash-o");
+
   }
 }
 
@@ -120,6 +128,7 @@ body {
 #projectArea p {
 	display: block;
 	font-family: arial, serif;
+  overflow-wrap: break-word;
 }
 
 #projectArea h2{
@@ -143,12 +152,20 @@ body {
 	margin: 25px;
 	color: white;
 	float: left;
+  box-shadow: 5px 5px 5px black;
+}
+
+#projectArea div i {
+  position: relative;
+  bottom: -40px;
+  right: -100px;
+  font-size: 30px;
 }
 
 #projectArea div:hover {
-	background-color: #4d4d4d;
-	outline: 5px solid #404040;
-	color: #cfcfcf;
+	box-shadow: 20px 10px 10px black;
+  transform: scale(1.002, 1.002);
+  font-size: scale(1.002, 1.002);
 }
 
 #logo{
