@@ -25,6 +25,7 @@
 
 </body><script> var projectNumber = localStorage.getItem('projectNumber');
 var projectArea = document.getElementById("projectArea")
+var deleting = false;
 
 //localStorage.removeItem("projectNumber");
 
@@ -45,6 +46,8 @@ for (i = 0; i < projectNumber; i++) {
     var descriptionElement = document.createElement("p");
     var descriptionNode = document.createTextNode(description);
     div.setAttribute("onclick", "openProject(" + id + ")");
+    div.setAttribute("id", "project" + id);
+    icon.setAttribute("onclick", "deleteProject(" + id + ")");
 		title.appendChild(TitleNode);
   descriptionElement.appendChild(descriptionNode);
   div.appendChild(title);
@@ -59,7 +62,17 @@ for (i = 0; i < projectNumber; i++) {
 }
 
 function openProject(id) {
+  if(!deleting){
   location.href = 'https://spark.js.org/editor.html?id=' + id;
+  } else {
+    deleting = true;
+    let element = document.getElementById("project" + id)
+    element.style.opacity = "0";
+    element.style.width = "0px";
+    setTimeout(function(){
+      element.remove();
+    }, 1000)
+  }
 }
 
 function createProject() {
@@ -67,6 +80,15 @@ function createProject() {
   localStorage.setItem("projectNumber", projectNumber);
   console.log(projectNumber)
   window.location.href = 'editor.html?id=' + (projectNumber - 1);
+}
+
+function deleteProject(id){
+  deleting = true;
+  localStorage.removeItem(id + "-name");
+  localStorage.removeItem(id + "-JScode");
+  localStorage.removeItem(id + "-CSScode");
+  localStorage.removeItem(id + "-HTMLcode");
+  localStorage.removeItem(id + "-description");
 }
 </script><style>
 	header {
@@ -122,13 +144,17 @@ body {
 #projectArea h1 {
 	display: block;
 	font-family: arial, serif;
-	font-size: 30px;
+	font-size: 25px;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
 }
 
 #projectArea p {
 	display: block;
 	font-family: arial, serif;
   overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #projectArea h2{
@@ -161,6 +187,11 @@ body {
   bottom: 5px;
   right: 5px;
   font-size: 30px;
+  transition: 0.2s;
+}
+
+#projectArea div i:hover {
+  color: red;
 }
 
 #projectArea div:hover {

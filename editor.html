@@ -131,7 +131,7 @@
     <p class="SettingsTitles">
       Name
     </p>
-    <input type="text" id="projectNameInput" class="projectInput" placeholder="Untitled Project" rows="1" maxlength="30" wrap="off">
+    <input type="text" id="projectNameInput" class="projectInput" placeholder="Untitled Project" rows="1" maxlength="20" wrap="off">
     <p class="SettingsTitles">
       Description
     </p>
@@ -516,6 +516,10 @@ function runCommand(event){
   font-size: 14px;
   width: 100px;
   clip-path: polygon(15% 0, 86% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+}
+
+.tab button:hover {
+  background-color: #878787;
 }
 
 .tab button.active {
